@@ -59,3 +59,9 @@ resource "azurerm_postgresql_flexible_server" "example" {
   depends_on = [azurerm_private_dns_zone_virtual_network_link.example]
 
 }
+
+resource "azurerm_postgresql_flexible_server_configuration" "example" {
+  name                = "log_line_prefix"
+  server_id = azurerm_postgresql_flexible_server.example.id
+  value               = "%m-%p-%l-%u-%d-%a-%h- "
+}
