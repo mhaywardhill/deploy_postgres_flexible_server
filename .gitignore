@@ -1,4 +1,5 @@
 terraform.exe
+.terraform.lock.hcl
 
 # Local .terraform directories
 **/.terraform/*
