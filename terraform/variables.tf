@@ -1,4 +1,4 @@
-variable "" {
+variable "prefix" {
   description = "prefix used for rg and server name"
   type        = string
   default     = "postgressqlflex894443"
