@@ -4,7 +4,7 @@
 ### Login to Azure using the CLI
 
 ```
-az Login`
+az Login
 ```
 
 Use `az account show` to check the subscription context.
@@ -16,17 +16,17 @@ Use `az account show` to check the subscription context.
 Navigate to the terraform folder and run the following commands.
 
 ```terraform
-./terraform.exe init`
+./terraform.exe init
 
-./terraform.exe plan`
+./terraform.exe plan
 
-./terraform.exe apply`
+./terraform.exe apply
 ```
 
 ### Cleanup Resources
 
 ```
-./terraform.exe destroy`
+./terraform.exe destroy
 ```
 
 #### Notes
