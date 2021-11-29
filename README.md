@@ -1,2 +1,7 @@
-# deploy_postgres_flexible_server
-Deploy PostgreSQL Flexible Server in Azure using Terraform
+AZ Login
+
+./terraform.exe init
+
+./terraform.exe plan
+
+./terraform.exe apply
