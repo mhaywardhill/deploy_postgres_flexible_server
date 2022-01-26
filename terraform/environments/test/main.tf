@@ -22,5 +22,14 @@ module "publicip" {
   source           = "../../modules/publicip"
   location         = var.location
   resource_group   = module.resource_group.resource_group_name
-  project              = var.project_name
+  project          = var.project_name
+}
+
+module "vm" {
+  source           = "../../modules/vm"
+  location         = var.location
+  resource_group   = module.resource_group.resource_group_name
+  subnet_id        = module.network.subnet_id
+  public_ip_address_id = module.publicip.public_ip_address_id
+  project          = var.project_name
 }
