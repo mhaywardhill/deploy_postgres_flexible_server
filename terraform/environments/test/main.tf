@@ -23,7 +23,8 @@ module "nsg" {
   location         = var.location
   resource_group   = module.resource_group.resource_group_name
   subnet_id        = module.network.subnet_id
-  project              = var.project_name
+  project          = var.project_name
+  my_public_ip     = var.my_public_ip
 }
 
 module "publicip" {
@@ -32,6 +33,12 @@ module "publicip" {
   resource_group   = module.resource_group.resource_group_name
   project          = var.project_name
 }
+
+data "azurerm_public_ip" "main" {
+  name = "pip-${var.project_name}"
+  resource_group_name = module.resource_group.resource_group_name
+}
+
 
 module "vm" {
   source           = "../../modules/vm"

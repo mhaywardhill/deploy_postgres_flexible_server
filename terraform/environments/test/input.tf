@@ -8,4 +8,4 @@ variable environment_name {
 
 variable vm_username {}
 
-
+variable my_public_ip {}
