@@ -18,7 +18,7 @@ export TF_VAR_project_name="<project prefix>"
 
 export TF_VAR_vm_username="<vm admin username>" 
 
-export TF_VAR_my_public_ip==$(curl -s http://whatismyip.akamai.com/)
+export TF_VAR_my_public_ip=$(curl -s http://whatismyip.akamai.com/)
 ```
 
 ### Init, Apply, and Plan, to deploy resources using Terraform
@@ -33,6 +33,15 @@ Navigate to the terraform folder and run the following commands.
 
 ./terraform apply
 ```
+### Connect to the VM
+
+```
+export vm_public_ip_addr=$(./terraform output -raw vm_public_ip_address) 
+
+ssh $vm_public_ip_addr
+```
+
+
 
 ### Cleanup Resources
 
