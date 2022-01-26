@@ -9,6 +9,13 @@ az Login
 
 Use `az account show` to check the subscription context.
 
+### Set environment variables
+
+The project prefix is used to name all the resources.
+
+```variables
+export TF_VAR_project_name="<project prefix>"
+```
 
 ### Init, Apply, and Plan, to deploy resources using Terraform
 
