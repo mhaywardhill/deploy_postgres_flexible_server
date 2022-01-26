@@ -18,6 +18,14 @@ module "network" {
   project              = var.project_name
 }
 
+module "nsg" {
+  source           = "../../modules/networksecuritygroup"
+  location         = var.location
+  resource_group   = module.resource_group.resource_group_name
+  subnet_id        = module.network.subnet_id
+  project              = var.project_name
+}
+
 module "publicip" {
   source           = "../../modules/publicip"
   location         = var.location
@@ -32,4 +40,5 @@ module "vm" {
   subnet_id        = module.network.subnet_id
   public_ip_address_id = module.publicip.public_ip_address_id
   project          = var.project_name
+  vm_username      = var.vm_username
 }

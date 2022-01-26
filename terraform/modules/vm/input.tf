@@ -5,3 +5,5 @@ variable "subnet_id" {}
 variable "public_ip_address_id" {}
 
 variable project {}
+
+variable vm_username {}
