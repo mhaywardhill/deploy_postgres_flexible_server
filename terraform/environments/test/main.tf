@@ -12,8 +12,8 @@ module "resource_group" {
 module "network" {
   source               = "../../modules/network"
   location             = var.location
-  resource_prefix      = "vnet"
   resource_group       = module.resource_group.resource_group_name
-  vnet_address_space   = var.vnet_address_space
+  address_space        = ["10.0.0.0/16"]
+  address_prefixes     = ["10.0.2.0/24"]
   project              = var.project_name
 }
