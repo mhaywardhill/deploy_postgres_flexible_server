@@ -34,14 +34,6 @@ Navigate to the terraform folder and run the following commands.
 ./terraform apply
 ```
 
-### Connect to the VM
-```
-export vm_public_ip_address=$(./terraform output -raw vm_public_ip_address) 
-
-ssh $vm_public_ip_address
-```
-
-
 ### Cleanup Resources
 
 ```

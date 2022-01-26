@@ -34,12 +34,6 @@ module "publicip" {
   project          = var.project_name
 }
 
-data "azurerm_public_ip" "main" {
-  name = "pip-${var.project_name}"
-  resource_group_name = module.resource_group.resource_group_name
-}
-
-
 module "vm" {
   source           = "../../modules/vm"
   location         = var.location
