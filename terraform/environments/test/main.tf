@@ -17,3 +17,10 @@ module "network" {
   address_prefixes     = ["10.0.2.0/24"]
   project              = var.project_name
 }
+
+module "publicip" {
+  source           = "../../modules/publicip"
+  location         = var.location
+  resource_group   = module.resource_group.resource_group_name
+  project              = var.project_name
+}
