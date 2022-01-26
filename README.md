@@ -16,17 +16,17 @@ Use `az account show` to check the subscription context.
 Navigate to the terraform folder and run the following commands.
 
 ```terraform
-./terraform.exe init
+./terraform init
 
-./terraform.exe plan
+./terraform plan
 
-./terraform.exe apply
+./terraform apply
 ```
 
 ### Cleanup Resources
 
 ```
-./terraform.exe destroy
+./terraform destroy
 ```
 
 #### Notes
