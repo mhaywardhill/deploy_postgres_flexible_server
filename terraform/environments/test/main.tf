@@ -9,3 +9,11 @@ module "resource_group" {
   project              = var.project_name
 }
 
+module "network" {
+  source               = "../../modules/network"
+  location             = var.location
+  resource_prefix      = "vnet"
+  resource_group       = module.resource_group.resource_group_name
+  vnet_address_space   = var.vnet_address_space
+  project              = var.project_name
+}
