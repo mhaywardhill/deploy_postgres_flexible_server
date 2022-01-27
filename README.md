@@ -19,6 +19,10 @@ export TF_VAR_project_name="<project prefix>"
 export TF_VAR_vm_username="<vm admin username>" 
 
 export TF_VAR_my_public_ip=$(curl -s http://whatismyip.akamai.com/)
+
+HISTCONTROL=ignoreboth
+ export TF_VAR_db_username="<admin username>"
+ export TF_VAR_db_password="<password>"
 ```
 
 ### Init, Apply, and Plan, to deploy resources using Terraform
