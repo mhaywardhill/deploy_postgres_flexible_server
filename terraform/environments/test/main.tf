@@ -14,7 +14,8 @@ module "network" {
   location             = var.location
   resource_group       = module.resource_group.resource_group_name
   address_space        = ["10.0.0.0/16"]
-  address_prefixes     = ["10.0.2.0/24"]
+  address_prefixes1    = ["10.0.2.0/24"]
+  address_prefixes2    = ["10.0.3.0/24"]
   project              = var.project_name
 }
 
@@ -22,7 +23,7 @@ module "nsg" {
   source           = "../../modules/networksecuritygroup"
   location         = var.location
   resource_group   = module.resource_group.resource_group_name
-  subnet_id        = module.network.subnet_id
+  subnet_id        = module.network.subnet1_id
   project          = var.project_name
   my_public_ip     = var.my_public_ip
 }
@@ -38,8 +39,20 @@ module "vm" {
   source           = "../../modules/vm"
   location         = var.location
   resource_group   = module.resource_group.resource_group_name
-  subnet_id        = module.network.subnet_id
+  subnet_id        = module.network.subnet2_id
   public_ip_address_id = module.publicip.public_ip_address_id
   project          = var.project_name
   vm_username      = var.vm_username
+}
+
+module "postgresql" {
+  source               = "../../modules/postgresql"
+  location             = var.location
+  resource_group       = module.resource_group.resource_group_name
+  server_name	     = "${var.project_name}-pgfs-${var.environment_name}"
+  db_username          = var.db_username
+  db_password          = var.db_password
+  project              = var.project_name
+  delegated_subnet_id  = module.network.subnet1_id
+  private_dns_zone_id  = module.network.dns_zone_id
 }
