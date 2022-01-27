@@ -1,5 +1,5 @@
 resource "azurerm_virtual_network" "main" {
-  name                 = "vnet-${var.project}"
+  name                 = "vnet-${var.project}-${var.environment_name}"
   address_space        = var.address_space
   location             = var.location
   resource_group_name  = var.resource_group
@@ -9,8 +9,11 @@ resource "azurerm_virtual_network" "main" {
   }
 }
 
-resource "azurerm_subnet" "main1" {
-  name                 = "snet-${var.project}1"
+/*
+Delegated subnet for postgres
+*/
+resource "azurerm_subnet" "postgres" {
+  name                 = "snet-${var.project}-postgres-${var.environment_name}"
   resource_group_name  = var.resource_group
   virtual_network_name = azurerm_virtual_network.main.name
   address_prefixes     = var.address_prefixes1
@@ -26,8 +29,8 @@ resource "azurerm_subnet" "main1" {
   }
 }
 
-resource "azurerm_subnet" "main2" {
-  name                 = "snet-${var.project}2"
+resource "azurerm_subnet" "vm" {
+  name                 = "snet-${var.project}-vm-${var.environment_name}"
   resource_group_name  = var.resource_group
   virtual_network_name = azurerm_virtual_network.main.name
   address_prefixes     = var.address_prefixes2
@@ -38,6 +41,7 @@ resource "azurerm_subnet" "main2" {
 Private DNS zone integration is required to connect to your Flexible Server 
 in virtual network using server name (fully qualified domain name).
 */
+
 resource "azurerm_private_dns_zone" "main" {
   name                = "${var.project}.postgres.database.azure.com"
   resource_group_name = var.resource_group
@@ -48,7 +52,7 @@ resource "azurerm_private_dns_zone" "main" {
 }
 
 resource "azurerm_private_dns_zone_virtual_network_link" "main" {
-  name                  = "fsexampleVnetZone.com"
+  name                  = "${var.project}_dns_zone_virtual_network_link"
   private_dns_zone_name = azurerm_private_dns_zone.main.name
   virtual_network_id    = azurerm_virtual_network.main.id
   resource_group_name   = var.resource_group
