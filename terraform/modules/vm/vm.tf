@@ -15,11 +15,11 @@ resource "azurerm_network_interface" "main" {
 }
 
 resource "azurerm_linux_virtual_machine" "main" {
-  name                = "vm-${var.project}"
-  location            = var.location
-  resource_group_name = var.resource_group
-  size                = "Standard_B1s"
-  admin_username      = var.vm_username
+  name                  = "vm-${var.project}"
+  location              = var.location
+  resource_group_name   = var.resource_group
+  size                  = "Standard_B1s"
+  admin_username        = var.vm_username
   network_interface_ids = [
     azurerm_network_interface.main.id,
   ]
@@ -29,8 +29,8 @@ resource "azurerm_linux_virtual_machine" "main" {
     public_key = file("~/.ssh/id_rsa.pub")
   }
   os_disk {
-    caching           = "ReadWrite"
-    storage_account_type = "Standard_LRS"
+    caching               = "ReadWrite"
+    storage_account_type  = "Standard_LRS"
   }
   source_image_reference {
     publisher = "Canonical"
