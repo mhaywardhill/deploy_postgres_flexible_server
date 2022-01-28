@@ -43,7 +43,7 @@ in virtual network using server name (fully qualified domain name).
 */
 
 resource "azurerm_private_dns_zone" "main" {
-  name                = "${var.project}.postgres.database.azure.com"
+  name                = "${var.project}-${var.environment_name}.postgres.database.azure.com"
   resource_group_name = var.resource_group
   
   tags = {
@@ -52,7 +52,7 @@ resource "azurerm_private_dns_zone" "main" {
 }
 
 resource "azurerm_private_dns_zone_virtual_network_link" "main" {
-  name                  = "${var.project}_dns_zone_virtual_network_link"
+  name                  = "${var.project}_dns_zone_link-${var.environment_name}"
   private_dns_zone_name = azurerm_private_dns_zone.main.name
   virtual_network_id    = azurerm_virtual_network.main.id
   resource_group_name   = var.resource_group

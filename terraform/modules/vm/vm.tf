@@ -1,5 +1,5 @@
 resource "azurerm_network_interface" "main" {
-  name                = "nic-${var.project}"
+  name                = "nic-${var.project}-${var.environment_name}"
   location            = var.location
   resource_group_name = var.resource_group
 
@@ -15,7 +15,7 @@ resource "azurerm_network_interface" "main" {
 }
 
 resource "azurerm_linux_virtual_machine" "main" {
-  name                  = "vm-${var.project}"
+  name                  = "vm-${var.project}-${var.environment_name}"
   location              = var.location
   resource_group_name   = var.resource_group
   size                  = "Standard_B1s"
@@ -35,7 +35,7 @@ resource "azurerm_linux_virtual_machine" "main" {
   source_image_reference {
     publisher = "Canonical"
     offer     = "UbuntuServer"
-    sku       = "18.04-LTS"
+    sku       = "20.04-LTS"
     version   = "latest"
   }
   tags = {

@@ -28,6 +28,7 @@ module "nsg" {
   vm_subnet_id        = module.network.vm_subnet_id
   project             = var.project_name
   my_public_ip        = var.my_public_ip
+  environment_name     = var.environment_name
   depends_on = [module.network]
 }
 
@@ -36,6 +37,7 @@ module "publicip" {
   location         = var.location
   resource_group   = module.resource_group.resource_group_name
   project          = var.project_name
+  environment_name     = var.environment_name
   depends_on = [module.network]
 }
 
@@ -47,6 +49,7 @@ module "vm" {
   public_ip_address_id = module.publicip.public_ip_address_id
   project          = var.project_name
   vm_username      = var.vm_username
+  environment_name     = var.environment_name
   depends_on = [module.nsg]
 }
 

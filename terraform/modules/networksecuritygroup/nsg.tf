@@ -1,5 +1,5 @@
 resource "azurerm_network_security_group" "vm" {
-  name                = "nsg-${var.project}-vm"
+  name                = "nsg-${var.project}-vm-${var.environment_name}"
   location            = var.location
   resource_group_name = var.resource_group
 
@@ -21,7 +21,7 @@ resource "azurerm_network_security_group" "vm" {
 }
 
 resource "azurerm_network_security_group" "postgres" {
-  name                = "nsg-${var.project}-postgres"
+  name                = "nsg-${var.project}-postgres-${var.environment_name}"
   location            = var.location
   resource_group_name = var.resource_group
  
