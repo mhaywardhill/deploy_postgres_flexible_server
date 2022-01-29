@@ -18,3 +18,41 @@ resource "azurerm_postgresql_flexible_server" "main" {
   }
 }
 
+resource "azurerm_monitor_diagnostic_setting" "diagnostic_settings" {
+   name     = "diagnosticSettings"
+   log_analytics_workspace_id = var.log_analytics_workspace_id
+   target_resource_id = azurerm_postgresql_flexible_server.main.id
+   
+  log { 
+    category  = "PostgreSQLLogs"
+    enabled   = true 
+
+    retention_policy {
+      enabled = false
+    }
+  }
+  
+  metric {
+    category  = "AllMetrics"
+
+    retention_policy {
+      enabled = false
+    }
+  }
+
+  depends_on  = [
+    azurerm_postgresql_flexible_server.main
+  ]
+}
+
+resource "azurerm_postgresql_flexible_server_configuration" "configuration" {
+    count               = length(var.server_parameters)
+    server_id           = azurerm_postgresql_flexible_server.main.id
+    name                = var.server_parameters[count.index].key
+    value               = var.server_parameters[count.index].value
+
+    depends_on          = [
+      azurerm_postgresql_flexible_server.main
+    ]
+  
+}

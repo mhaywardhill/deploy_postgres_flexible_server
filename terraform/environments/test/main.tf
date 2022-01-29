@@ -54,15 +54,16 @@ module "vm" {
 }
 
 module "postgresql" {
-  source                = "../../modules/postgresql"
-  location              = var.location
-  resource_group        = module.resource_group.resource_group_name
-  server_name	          = "${var.project_name}-pgfs-${var.environment_name}"
-  db_username           = var.db_username
-  db_password           = var.db_password
-  project               = var.project_name
-  delegated_subnet_id   = module.network.postgres_subnet_id
-  private_dns_zone_id   = module.network.dns_zone_id
+  source                      = "../../modules/postgresql"
+  location                    = var.location
+  resource_group              = module.resource_group.resource_group_name
+  server_name	                = "${var.project_name}-pgfs-${var.environment_name}"
+  db_username                 = var.db_username
+  db_password                 = var.db_password
+  project                     = var.project_name
+  delegated_subnet_id         = module.network.postgres_subnet_id
+  private_dns_zone_id         = module.network.dns_zone_id
+  log_analytics_workspace_id  = module.log_analytics.log_analytics_workspace_id
   depends_on = [module.nsg]
 }
 module "log_analytics" {
