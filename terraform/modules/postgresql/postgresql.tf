@@ -11,7 +11,7 @@ resource "azurerm_postgresql_flexible_server" "main" {
   
   storage_mb = 32768
   
-  sku_name   = "GP_Standard_D4s_v3"
+  sku_name   = "B_Standard_B1ms"
   
   tags = {
     project = var.project
