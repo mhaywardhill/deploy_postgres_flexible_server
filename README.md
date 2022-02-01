@@ -1,7 +1,3 @@
-<a href="https://terraform.io">
-    <img src="/diagram/tf.png" alt="Terraform logo" title="Terraform" align="left" height="50" />
-</a>
-
 ## Deploy Postgres Flexible Server in Azure
 
 ### Project Overview
