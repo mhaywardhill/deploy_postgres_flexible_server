@@ -2,6 +2,8 @@
 
 ### Project Overview
 
+Deploy PostgreSQL flexible server in a delegated subnet, using Terraform.
+
 ![Azure diagram](/diagram/postgres_flexible_diagram.png)  
 
 ### Deploy resources
