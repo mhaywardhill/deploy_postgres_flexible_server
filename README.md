@@ -1,15 +1,20 @@
 
 ## Deploy Postgres Flexible Server in Azure
 
-### Login to Azure using the CLI
+### Project Overview
 
+![Azure diagram](/diagram/postgres_flexible_diagram.png)  
+
+### Deploy resources
+
+Login to Azure using the CLI
 ```
 az Login
 ```
 
 Use `az account show` to check the subscription context.
 
-### Set environment variables
+#### Set environment variables
 
 The project prefix is used to name all the resources.
 
@@ -25,7 +30,7 @@ HISTCONTROL=ignoreboth
  export TF_VAR_db_password="<password>"
 ```
 
-### Init, Apply, and Plan, to deploy resources using Terraform
+####  Init, Apply, and Plan, to deploy resources using Terraform
 
 
 Navigate to the terraform folder and run the following commands.
@@ -37,7 +42,7 @@ Navigate to the terraform folder and run the following commands.
 
 ./terraform apply
 ```
-### Connect to the VM
+####  Connect to the VM
 
 ```
 export vm_public_ip_addr=$(./terraform output -raw vm_public_ip_address) 
@@ -47,7 +52,7 @@ ssh $vm_public_ip_addr
 
 
 
-### Cleanup Resources
+####  Cleanup Resources
 
 ```
 ./terraform destroy
