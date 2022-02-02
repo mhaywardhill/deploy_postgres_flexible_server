@@ -71,7 +71,7 @@ ssh $vm_public_ip_addr
 ```
 
 
-### prerequisites
+### Prerequisites
 
 Download the Linux Terraform binary and copy to terraform environment folder, for example, environments/test.
 
@@ -81,7 +81,7 @@ https://www.terraform.io/downloads
 
 Install the Azure CLI
 
-https://www.terraform.io/downloads
+https://docs.microsoft.com/en-us/cli/azure/install-azure-cli
 
 Install Git
 
