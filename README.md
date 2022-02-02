@@ -4,7 +4,7 @@
 
 I use this project to create a Postgres test environment in Azure using Terraform. I execute the commands from a Linux terminal on Windows (Ubuntu on WSL). 
 
-The environment variable TF_VAR_project_name and the Terraform variable location (hardcoded in the terraform.tfvars file) are used to name the resources.
+The environment variable TF_VAR_project_name and the Terraform variable environment_name (hardcoded in the input.tf file) are used to name the resources.
 
 I have selected Private access (VNET Integration) for the connectivity method, so the Postgres server is deployed in a delegated subnet.
 
@@ -48,7 +48,7 @@ Navigate to the terraform environment folder, for example, environments/test and
 
 ./terraform apply
 ```
-####  Connect to the VM
+###  Connect to the VM
 
 ```
 export vm_public_ip_addr=$(./terraform output -raw vm_public_ip_address) 
