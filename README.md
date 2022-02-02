@@ -2,7 +2,12 @@
 
 ### Project Overview
 
-Deploy PostgreSQL flexible server in a delegated subnet, using Terraform.
+I use this project to create a Postgres test environment in Azure using Terraform. I execute the commands from a Linux terminal on Windows (Ubuntu on WSL). 
+
+The environment variable TF_VAR_project_name and the Terraform variable location (hardcoded in the terraform.tfvars file) are used to name the resources.
+
+I have selected Private access (VNET Integration) for the connectivity method, so the Postgres server is deployed in a delegated subnet.
+
 
 ![Azure diagram](/diagram/postgres_flexible_diagram.png)  
 
@@ -34,7 +39,7 @@ HISTCONTROL=ignoreboth
 ####  Init, Apply, and Plan, to deploy resources using Terraform
 
 
-Navigate to the terraform folder and run the following commands.
+Navigate to the terraform environment folder, for example, environments/test and run the following commands.
 
 ```terraform
 ./terraform init
@@ -53,12 +58,12 @@ ssh $vm_public_ip_addr
 
 
 
-####  Cleanup Resources
+###  Cleanup Resources
 
 ```
 ./terraform destroy
 ```
 
-#### Notes
+### Notes
 
 Installed Terraform version: hashicorp/azurerm v2.87.0 
