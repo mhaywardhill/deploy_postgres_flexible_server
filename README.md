@@ -75,7 +75,7 @@ ssh $vm_public_ip_addr
 
 Download the Linux Terraform binary and copy to terraform environment folder, for example, environments/test.
 
-The project has been tested with Terraform version: hashicorp/azurerm v2.87.0 
+The project was originally created for Terraform hashicorp/azurerm v2.87.0, but updated for v3.0.1
 
 https://www.terraform.io/downloads
 
