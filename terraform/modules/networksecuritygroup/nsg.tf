@@ -10,7 +10,7 @@ resource "azurerm_network_security_group" "vm" {
     access                     = "Allow"
     source_port_range          = "*"
     destination_port_range     = "22"
-    protocol			             = "TCP"
+    protocol			 = "Tcp"
     source_address_prefix      = var.my_public_ip
     destination_address_prefix = "*"
   }
